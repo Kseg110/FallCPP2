@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     Vector3 moveInput;
     public float moveSpeed = 8f;
+    public float headHeight = 1.8f;
+
+    Enemy lastFrozenEnemy = null;
 
     // void Awake()
     //{
@@ -28,16 +31,31 @@ public class PlayerController : MonoBehaviour
         float vInput = Input.GetAxis("Vertical");
         moveInput = new Vector3(hInput, 0f, vInput);
 
-        Ray newRay = new Ray(transform.position, transform.forward);
+        //Raycast
+        Vector3 rayOrigin = transform.position + Vector3.up * headHeight;
+        Ray newRay = new Ray(rayOrigin, transform.forward);
         RaycastHit hitInfo;
 
-        Debug.DrawRay(newRay.origin, newRay.direction * 10f, Color.red, 0.1f);
+        Debug.DrawRay(newRay.origin, newRay.direction * 10f, Color.red, 0.2f);
 
         if (Physics.Raycast(newRay, out hitInfo, 10.0f, LayerMask.GetMask("Enemy")))
         {
             Debug.Log("Enemy in front of player: " + hitInfo.collider.name);
+            Enemy enemy = hitInfo.collider.GetComponent<Enemy>();
+            if (enemy != null) 
+            {
+                enemy.Freeze(true);
+                lastFrozenEnemy = enemy;
+            }
         }
-
+        else
+        {
+            if (lastFrozenEnemy != null)
+            {
+                lastFrozenEnemy.Freeze(false);
+                lastFrozenEnemy = null;
+            }
+        }
 
     }
 
