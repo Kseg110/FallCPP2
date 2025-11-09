@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float headHeight = 1.8f;
 
     Enemy lastFrozenEnemy = null;
+    public Transform cameraTransform; // Assign camera in the player inspector for synced movement 
 
     // void Awake()
     //{
@@ -29,7 +30,17 @@ public class PlayerController : MonoBehaviour
         // input axes
         float hInput = Input.GetAxis("Horizontal");
         float vInput = Input.GetAxis("Vertical");
-        moveInput = new Vector3(hInput, 0f, vInput);
+
+        // camera direction synced to movement 
+        Vector3 camForward = cameraTransform.forward;
+        Vector3 camRight = cameraTransform.right;
+        camForward.y = 0f;
+        camRight.y = 0f;
+        camForward.Normalize();
+        camRight.Normalize();
+
+        moveInput = (camForward * vInput + camRight * hInput).normalized;
+        //moveInput = new Vector3(hInput, 0f, vInput);
 
         //Raycast
         Vector3 rayOrigin = transform.position + Vector3.up * headHeight;
