@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform player; //Assign the player Prefab in the inspector 
-    public float mouseSensitivity = 100f;
+    public float mouseSensitivity = 80f;
     private float xRotation = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,5 +26,17 @@ public class CameraController : MonoBehaviour
 
         // Horizontal Rotation or Yaw
         player.Rotate(Vector3.up * mouseX);
+    }
+
+    void OnGUI()
+    {
+        //create a dot for a crosshair 
+        float size = 6f;
+        //center the dot
+        float x = (Screen.width - size) / 2;
+        float y = (Screen.height - size) / 2;
+        //Draw a simple white dot
+        GUI.color = Color.white;
+        GUI.DrawTexture(new Rect(x, y, size, size), Texture2D.whiteTexture);
     }
 }

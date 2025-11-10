@@ -298,6 +298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DogPBR
       objectReference: {fileID: 0}
+    - target: {fileID: 8422892626600285392, guid: 214e08cd5e5d74c458e2a81b7ec2c84c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1085,11 +1089,38 @@ MonoBehaviour:
   - {fileID: 300339229330374593, guid: 82a08fe4a340f494d9f179d33380c0b0, type: 3}
   - {fileID: 1340698381678742324, guid: 765afb2f737165c41968aca039922a90, type: 3}
   - {fileID: 5263657678900511022, guid: fa5a3bb1731b3494ca415065eed50556, type: 3}
+--- !u!1 &1582717182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 103429875268246057, guid: 39f22d467e7e5b54caaf601f2885b660, type: 3}
+  m_PrefabInstance: {fileID: 1637753648818999659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1582717186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 730889638422937747, guid: 39f22d467e7e5b54caaf601f2885b660, type: 3}
   m_PrefabInstance: {fileID: 1637753648818999659}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1582717187
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582717182}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d32bec17a9859e489cd4827497fac6d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1740621200 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3601044307826237179, guid: d2cfbebbca6ee2e4687e7db4c6ecb069, type: 3}
@@ -1108,6 +1139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   moveSpeed: 1
+  turnSpeed: 5
 --- !u!1 &1991621916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,6 +1480,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 103429875268246057, guid: 39f22d467e7e5b54caaf601f2885b660, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1582717187}
     - targetCorrespondingSourceObject: {fileID: 4878413458806454221, guid: 39f22d467e7e5b54caaf601f2885b660, type: 3}
       insertIndex: -1
       addedObject: {fileID: 293391824}

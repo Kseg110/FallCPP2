@@ -61,6 +61,8 @@ public class Enemy : MonoBehaviour
         
         ////normalize enemy behaviour (lock on, follow, etc)
         //rb.linearVelocity = transform.forward * moveSpeed;
+
+
     }
 
         public void Freeze(bool freeze)
@@ -70,6 +72,15 @@ public class Enemy : MonoBehaviour
         {
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //projectile and frozen state check 
+        if (isFrozen && other.CompareTag("Projectile"))
+        {
+            Destroy(gameObject);
         }
     }
 }
